@@ -1,29 +1,29 @@
 /* eslint-disable react/prop-types */
-import Card from "../Card/Card";
-import "./Column.css";
+import Card from "../TicketCard/TicketCard";
+import "./Board.css";
 import { BsFillBarChartFill } from "react-icons/bs";
-import { AiOutlinePlus } from "react-icons/ai";
+import { AiOutlinePlus, AiOutlineCheckCircle } from "react-icons/ai";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
-
-function Column({ tickets, header }) {
+import { SiInstatus } from "react-icons/si";
+function Board({ tickets, header }) {
     return (
-        <div className="column-container padding-sm">
-            <div className="column-header margin-bottom-lg">
+        <div className="board-container">
+            <div className="board-header">
                 <div>
-                    <div className="flex gap-md">
-                        <BsFillBarChartFill className="icon" />
+                    <div className="flex-gap">
+                        <SiInstatus className="bg-color-status-icon" />
                         <p>{header}</p>
                         <span>{tickets.length}</span>
                     </div>
                 </div>
 
-                <div className="flex gap-sm">
-                    <AiOutlinePlus className="icon" />
-                    <BiDotsHorizontalRounded className="icon" />
+                <div className="flex-gap">
+                    <AiOutlinePlus className="bg-color-icon" />
+                    <BiDotsHorizontalRounded className="bg-color-icon" />
                 </div>
             </div>
 
-            <div className="column-body">
+            <div className="board-hero">
                 {tickets.map((ticket) => {
                     return (
                         <Card
@@ -41,4 +41,4 @@ function Column({ tickets, header }) {
     );
 }
 
-export default Column;
+export default Board;

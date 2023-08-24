@@ -1,10 +1,10 @@
 import { useState } from "react";
-import Column from "./components/Column/Column";
+import Board from "./components/Board/Board";
 import { GroupingList, OrderingList, priorityMap } from "./data/data";
-import { VscSettings } from "react-icons/vsc";
+import { FiSettings } from "react-icons/fi";
 
 import "./App.css";
-import { useClickOutside } from "./hooks/customHooks";
+
 import { useEffect } from "react";
 import { ordering, groups } from "./constants/constants";
 import { getLocalStorageItem } from "./helpers/localStorage";
@@ -40,7 +40,7 @@ function App() {
         const storedState = getLocalStorageItem("currentstate");
         return storedState ? storedState : [];
     });
-    const [showModal, setShowModal] = useState(false);
+    const [showFilterContainer, setShowFilterContainer] = useState(false);
     function getNameById(id) {
         const foundUser = users.find((u) => u.id === id);
         return foundUser ? foundUser.name : "User not found";
@@ -74,6 +74,7 @@ function App() {
     }, [tickets]);
 
     const groupHandler = (e) => {
+        setShowFilterContainer(false);
         setSelectedGrouping(e.target.value);
         setLocalStorageItem("selectedgrouping", e.target.value);
         if (e.target.value === "user") {
@@ -113,6 +114,7 @@ function App() {
         }
     };
     const orderHandler = (e) => {
+        setShowFilterContainer(false);
         setSelectedOrdering(e.target.value);
         setLocalStorageItem("selectedordering", e.target.value);
         if (e.target.value === "priority") {
@@ -149,33 +151,25 @@ function App() {
         }
     };
 
-    const elementRef = useClickOutside(() => {
-        console.log(showModal, "showmodal");
-        if (showModal) {
-            // setShowModal(false);
-        }
-    });
-
     return (
         <article>
             <header>
-                <div ref={elementRef} className="select-group">
+                <div className="select-container">
                     <div
-                        className="flex border-curve gap-sm react-icon is-clickable"
+                        className="display-button border-curve pointer"
                         onClick={() => {
-                            console.log("clicked from button");
-                            setShowModal((prev) => !prev);
+                            setShowFilterContainer((prev) => !prev);
                         }}
                     >
-                        <VscSettings />
+                        <FiSettings />
                         <p>Display</p>
                     </div>
-                    {showModal ? (
-                        <div className="select-modal border-curve">
-                            <div className="flex gap-md padding-sm justify-between">
+                    {showFilterContainer ? (
+                        <div className="select-popup border-curve">
+                            <div className="flex-container">
                                 <p>Grouping</p>
                                 <select
-                                    className="custom-select"
+                                    className="select-element"
                                     name="group-select"
                                     onChange={(e) => groupHandler(e)}
                                     value={selectedGrouping}
@@ -190,10 +184,10 @@ function App() {
                                 </select>
                             </div>
 
-                            <div className="flex gap-md padding-sm justify-between">
+                            <div className="flex-container">
                                 <p>Ordering</p>
                                 <select
-                                    className="custom-select"
+                                    className="select-element"
                                     name="order-select"
                                     onChange={(e) => orderHandler(e)}
                                     value={selectedOrdering}
@@ -211,24 +205,18 @@ function App() {
                     ) : null}
                 </div>
             </header>
-            <main>
-                <div className="margin-lg">
-                    <div className="column-grid-wrapper">
+            <main className="main-container">
+                <div className="board-grid-container">
+                    <div className="board-grid-inner">
                         {Object.keys(displayState).map((data) => {
                             return (
-                                <Column
+                                <Board
                                     header={data}
                                     tickets={displayState[data]}
                                     key={data}
                                 />
                             );
                         })}
-                        {}
-                        {/* <Column />
-                        <Column />
-                        <Column />
-                        <Column />
-                        <Column /> */}
                     </div>
                 </div>
             </main>

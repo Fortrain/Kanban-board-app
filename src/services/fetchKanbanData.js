@@ -7,6 +7,6 @@ export const fetchKanbanData = async () => {
         return results;
     } catch (error) {
         console.error("Error fetching data:", error);
-        throw error; // Rethrow the error to handle it further up the call stack if needed
+        throw error;
     }
 };

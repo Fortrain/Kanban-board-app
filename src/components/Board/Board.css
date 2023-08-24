@@ -1,17 +1,19 @@
-.column-container {
+.board-container {
     height: 100%;
     max-width: 100%;
     width: fit-content;
-    
+    padding: 0.5rem;
+    width: 100%;
 }
 
-.column-container .column-header {
+.board-container .board-header {
     display: flex;
     justify-content: space-between;
     padding-inline: 2.5px;
+    margin: 0 0 20px 0;
 }
 
-.column-container .column-body {
+.board-container .board-hero {
     display: grid;
-    gap: 10px;
+    gap: 1rem;
 }
