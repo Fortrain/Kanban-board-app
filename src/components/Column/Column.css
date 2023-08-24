@@ -1,0 +1,17 @@
+.column-container {
+    height: 100%;
+    max-width: 100%;
+    width: fit-content;
+    
+}
+
+.column-container .column-header {
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 2.5px;
+}
+
+.column-container .column-body {
+    display: grid;
+    gap: 10px;
+}

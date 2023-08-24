@@ -1,0 +1,36 @@
+.avatar-container {
+	display: inline-block;
+	position: relative;
+}
+
+.image-container {
+	position: relative;
+	border-radius: 50%;
+	height: 2.5rem;
+	width: 2.5rem;
+	display: flex;
+}
+
+.image-container .image {
+	object-fit: contain;
+	position: relative;
+	border-radius: 50%;
+	height: unset;
+	width: 100%;
+}
+
+.badge {
+	border: 2px solid white;
+	display: inline-block;
+	background: lightgray;
+	border-radius: 50%;
+	position: absolute;
+	height: 0.75rem;
+	width: 0.75rem;
+	bottom: 0;
+	right: 0;
+}
+
+.badge.available{
+	background: green;
+}

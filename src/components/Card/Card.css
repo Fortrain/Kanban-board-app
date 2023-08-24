@@ -1,0 +1,44 @@
+.card-container {
+	max-width: 500px;
+	width: 100%;
+    padding: 1rem;
+}
+
+.card-container .card-header {
+	justify-content: space-between;
+	align-items: center;
+	display: flex;
+}
+
+.card-container .card-body {
+	width: 100%;
+	max-width: 100%;
+}
+.card-container .title {
+    max-width: 95%;
+    width: 100%;
+	font-size: 2rem;
+	font-weight: 600;
+    margin-right: 20px;
+}
+
+.card-container .tag-group {
+	max-width: max-content;
+	display: flex;
+	width: 100%;
+	gap: 10px;
+	height: max-content;
+}
+
+.card-container .tag-group .alert-icon {
+	height: 100%;
+	padding: 5px 5px 2.5px 5px;
+	align-self: center;
+}
+
+.card-container .tag-group .tag {
+	height: 100%;
+	max-width: max-content;
+	display: flex;
+	gap: 5px;
+}
