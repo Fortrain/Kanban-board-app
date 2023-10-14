@@ -43,7 +43,7 @@ header {
     display: inline-block;
     position: relative;
     padding: 0.5rem;
-    border-radius: 5px;
+    border-radius: 2px;
     text-transform: capitalize;
 }
 

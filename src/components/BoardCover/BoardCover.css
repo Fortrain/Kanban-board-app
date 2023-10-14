@@ -1,0 +1,31 @@
+.header-title {
+    font-weight: 500;
+    font-size: small;
+}
+
+.header-title-length {
+    font-size: small;
+    font-weight: 300;
+}
+
+.board-container {
+    height: 100%;
+    max-width: 100%;
+    width: fit-content;
+    padding: 0.5rem;
+    width: 100%;
+}
+.board-container .board-header {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 20px 0;
+    padding: 0.5rem;
+    border: 1px solid var(--clr-grey-9);
+    font-size: large;
+    padding-inline: 2.5px;
+    border-radius: 3px;
+}
+.board-container .board-main {
+    display: grid;
+    gap: 1rem;
+}

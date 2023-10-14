@@ -1,6 +1,7 @@
 import { AiOutlineCheckCircle } from "react-icons/ai";
-import { MdFeaturedVideo } from "react-icons/md";
-import "./TicketCard.css";
+import { GoDotFill } from "react-icons/go";
+
+import "./Ticket.css";
 
 const TicketCard = ({ id, profileURL, status, title, tag }) => {
     return (
@@ -8,34 +9,32 @@ const TicketCard = ({ id, profileURL, status, title, tag }) => {
             <div className="ticket-card-header">
                 <p className="header-id">{id}</p>
                 {profileURL ? (
-                    <div className="ticket-avatar-container">
+                    <div>
                         <div className="ticket-image-container">
                             <img
                                 src={profileURL}
                                 className="image"
-                                alt="prosper-baba"
+                                alt="Profile Avatar"
                             />
                         </div>
 
                         <span
-                            className={`ticket-avatar-badge ${
-                                status === true ? "available" : ""
-                            }`}
+                            className={`ticket-avatar-holder ${status === true ? "available" : ""}`}
                         ></span>
                     </div>
                 ) : null}
             </div>
-            <div className="ticket-card-hero">
+            <div className="ticket-card">
                 <div className="ticket-card-title">
                     <p>{title}</p>
                 </div>
 
                 <div className="ticket-tag-container">
-                    <div className="alert-icon border-curve">
+                    <div className="tag-icon border-curve">
                         <AiOutlineCheckCircle className="bg-color-icon" />
                     </div>
                     <div className="ticket-card-tag border-curve">
-                        <MdFeaturedVideo className="bg-color-icon" />
+                        <GoDotFill className="bg-color-icon" />
                         <p className="tag-text">{tag}</p>
                     </div>
                 </div>

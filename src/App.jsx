@@ -1,50 +1,48 @@
 import { useState } from "react";
-import Board from "./components/Board/Board";
-import { GroupingList, OrderingList, priorityMap } from "./data/data";
-import { FiSettings } from "react-icons/fi";
+import BoardCover from "./components/BoardCover/BoardCover";
+import { GroupingList, OrderingList, priorityMap } from "./apiData/apiData";
 
 import "./App.css";
-
 import { useEffect } from "react";
-import { ordering, groups } from "./constants/constants";
-import { getLocalStorageItem } from "./helpers/localStorage";
-import { setLocalStorageItem } from "./helpers/localStorage";
-import { fetchKanbanData } from "./services/fetchKanbanData";
+import { ordering, groups } from "./selectElements/selectElements";
+import { getLocalStorageItem,  setLocalStorageItem  } from "./helpers/localStorage";
+import { fetchKanbanData } from "./services/fetchData";
+
+import { VscSettings } from "react-icons/vsc";
+
 
 function groupTicketsByProperty(property, state) {
-    const groupedTickets = {};
+    const grpTickets = {};
 
     state.forEach((ticket) => {
-        const value = ticket[property];
-        if (!groupedTickets[value]) {
-            groupedTickets[value] = [];
-        }
-        groupedTickets[value].push(ticket);
+        const val = ticket[property];
+
+        if (!grpTickets[val]) grpTickets[val] = [];
+
+        grpTickets[val].push(ticket);
     });
 
-    return groupedTickets;
+    return grpTickets;
 }
 
 function App() {
+    
     const [tickets, setTickets] = useState();
     const [users, setUsers] = useState();
+    
     const [selectedGrouping, setSelectedGrouping] = useState(() => {
-        const storedState = getLocalStorageItem("selectedgrouping");
-        return storedState ? storedState : groups.STATUS;
+        const ss = getLocalStorageItem("selectedgrouping");
+        return ss ? ss : groups.STATUS;
     });
     const [selectedOrdering, setSelectedOrdering] = useState(() => {
-        const storedState = getLocalStorageItem("selectedordering");
-        return storedState ? storedState : ordering.PRIORITY;
+        const ss = getLocalStorageItem("selectedordering");
+        return ss ? ss : ordering.PRIORITY;
     });
     const [displayState, setDisplayState] = useState(() => {
-        const storedState = getLocalStorageItem("currentstate");
-        return storedState ? storedState : [];
+        const ss = getLocalStorageItem("currentstate");
+        return ss ? ss : [];
     });
     const [showFilterContainer, setShowFilterContainer] = useState(false);
-    function getNameById(id) {
-        const foundUser = users.find((u) => u.id === id);
-        return foundUser ? foundUser.name : "User not found";
-    }
 
     useEffect(() => {
         const loadKanbanData = async () => {
@@ -73,6 +71,11 @@ function App() {
         }
     }, [tickets]);
 
+    function getName(id) {
+        const user = users.find((u) => u.id === id);
+        return user ? user.name : "User not found";
+    }
+
     const groupHandler = (e) => {
         setShowFilterContainer(false);
         setSelectedGrouping(e.target.value);
@@ -83,7 +86,7 @@ function App() {
                 tickets
             );
             Object.keys(ticketsGroupedByName).forEach(function (key) {
-                var newkey = getNameById(key);
+                var newkey = getName(key);
                 ticketsGroupedByName[newkey] = ticketsGroupedByName[key];
                 delete ticketsGroupedByName[key];
             });
@@ -161,7 +164,7 @@ function App() {
                             setShowFilterContainer((prev) => !prev);
                         }}
                     >
-                        <FiSettings />
+                        <VscSettings />
                         <p>Display</p>
                     </div>
                     {showFilterContainer ? (
@@ -210,7 +213,7 @@ function App() {
                     <div className="board-grid-inner">
                         {Object.keys(displayState).map((data) => {
                             return (
-                                <Board
+                                <BoardCover
                                     header={data}
                                     tickets={displayState[data]}
                                     key={data}

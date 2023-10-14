@@ -3,15 +3,11 @@
 
 :root {
     --clr-primary-1: #173ead;
-    /* Note: primary/main color */
     --clr-primary-2: #1d4ed8;
-
-    /* Note: darkest grey - used for headings */
     --clr-grey-1: #102a42;
     --clr-grey-2: #243a52;
     --clr-grey-3: #324d67;
     --clr-grey-4: #48647f;
-    /* Note: grey used for paragraphs */
     --clr-grey-5: #617d98;
     --clr-grey-6: #829ab0;
     --clr-grey-7: #9eb2c7;
@@ -48,28 +44,7 @@ body {
 }
 
 body::-webkit-scrollbar {
-    width: 0.8rem;
-}
-
-/* Note:Handle */
-body::-webkit-scrollbar {
-    scroll-behavior: smooth;
-    width: 5px;
-}
-body::-webkit-scrollbar-thumb {
-    background: var(--clr-primary-1);
-    border-radius: 2rem;
-}
-
-/* Note:Handle on hover */
-body::-webkit-scrollbar-thumb:hover {
-    background: var(--clr-primary-2);
-}
-
-/* Note:Track */
-
-body::-webkit-scrollbar-track {
-    background: var(--clr-grey-9);
+    display: none;
 }
 
 @media only screen and (max-width: 37.5em) {
@@ -103,7 +78,7 @@ h5 {
 }
 p,
 span {
-    font-size: small;
+    font-size: 1.2rem;
 }
 
 h1,
@@ -150,9 +125,10 @@ a {
 
 .bg-color-icon {
     fill: slategray;
+    padding: 0;
 }
 .bg-color-status-icon {
-    fill: var(--clr-primary-2);
+    fill: red;
 }
 
 .flex-gap {

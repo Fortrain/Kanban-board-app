@@ -2,41 +2,38 @@
     max-width: 50rem;
     width: 100%;
     padding: 1rem;
+    background-color: white;
+    box-shadow: 0 0.2rem 0.5rem 0 rgba(0, 0, 0, 0.2);
 }
-
 .ticket-card-container .ticket-card-header {
-    justify-content: space-between;
-    align-items: center;
     display: flex;
+    justify-content:space-between;
+    align-items: center;
 }
-
-.ticket-card-container .ticket-card-hero {
+.ticket-card-container .ticket-card {
     width: 100%;
     max-width: 100%;
 }
 .ticket-card-container .ticket-card-title {
     max-width: 95%;
     width: 100%;
-    font-size: 2rem;
-    font-weight: 600;
+    font-size: 1rem;
+    font-weight: 500;
     margin-right: 2rem;
     padding: 0.5rem 0;
 }
-
 .ticket-card-container .ticket-tag-container {
-    max-width: max-content;
     display: flex;
-    width: 100%;
-    gap: 1rem;
+    max-width: max-content;
     height: max-content;
+    width: 100%;
+    gap: 1.5rem;
 }
-
-.ticket-card-container .ticket-tag-container .alert-icon {
+.ticket-card-container .ticket-tag-container .tag-icon {
+    align-self: center;
     height: 100%;
     padding: 2.8px 5px;
-    align-self: center;
 }
-
 .ticket-card-container .ticket-tag-container .ticket-card-tag {
     height: 100%;
     max-width: max-content;
@@ -45,6 +42,8 @@
     padding: 0.5rem;
     align-items: center;
 }
+
+
 .avatar-container {
     display: inline-block;
     position: relative;
@@ -65,7 +64,8 @@
     height: unset;
     width: 100%;
 }
-.ticket-avatar-badge {
+
+.ticket-avatar-holder {
     border: 2px solid white;
     display: inline-block;
     background: lightgray;
@@ -76,7 +76,6 @@
     bottom: 0;
     right: 0;
 }
-
-.ticket-avatar-badge.available {
+.ticket-avatar-holder.available {
     background: green;
 }
